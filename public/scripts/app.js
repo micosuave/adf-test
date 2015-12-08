@@ -53,7 +53,7 @@ angular.module('adfDynamicSample', [
     return {
       getAll: function(){
         var deferred = $q.defer();
-        $http.get('/v1/store')
+        $http.get('./v1/store')
           .success(function(data){
             deferred.resolve(data.dashboards);
           })
@@ -64,7 +64,7 @@ angular.module('adfDynamicSample', [
       },
       get: function(id){
         var deferred = $q.defer();
-        $http.get('/v1/store/' + id)
+        $http.get('./v1/store/' + id)
           .success(function(data){
             deferred.resolve(data);
           })
@@ -75,7 +75,7 @@ angular.module('adfDynamicSample', [
       },
       set: function(id, data){
         var deferred = $q.defer();
-        $http.post('/v1/store/' + id, data)
+        $http.post('./v1/store/' + id, data)
           .success(function(data){
             deferred.resolve();
           })
@@ -86,7 +86,7 @@ angular.module('adfDynamicSample', [
       },
       delete: function(id){
         var deferred = $q.defer();
-        $http.delete('/v1/store/' + id)
+        $http.delete('sites/v1/store/' + id)
           .success(function(data){
             deferred.resolve(data);
           })
@@ -113,7 +113,7 @@ angular.module('adfDynamicSample', [
     this.create = function(){
       var id = '_' + new Date().getTime();
       var q = storeService.set(id, {
-        "title": "New Sample",
+        "title": "New Page",
         "structure": "4-8",
         "rows": [{
           "columns": [{

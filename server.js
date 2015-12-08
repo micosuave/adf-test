@@ -77,7 +77,7 @@ app.use(function(err, req, res, next) {
     res.status(500).end();
   }
 });
-module.exports = app.router();
+module.exports = app;
 // var server = app.listen(3000, function() {
 //     console.log('Listening on port %d', server.address().port);
 // });

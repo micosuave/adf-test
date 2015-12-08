@@ -1,0 +1,29 @@
+{
+  "title": "New Page",
+  "structure": "4-8",
+  "rows": [
+    {
+      "columns": [
+        {
+          "styleClass": "col-md-4",
+          "widgets": [
+            {
+              "type": "news",
+              "config": {},
+              "title": "News",
+              "titleTemplateUrl": "../src/templates/widget-title.html",
+              "wid": 3
+            }
+          ],
+          "cid": 1
+        },
+        {
+          "styleClass": "col-md-8",
+          "widgets": [],
+          "cid": 2
+        }
+      ]
+    }
+  ],
+  "titleTemplateUrl": "../src/templates/dashboard-title.html"
+}

@@ -138,7 +138,7 @@ angular.module('adfDynamicSample', [
     };
 
     this.create = function(){
-      var id = $rootScope.authData.id + '_' + new Date().getTime();
+      var id =  '_' + new Date().getTime();
       var q = storeService.set(id, {
         "title": "New Page",
         "structure": "4-8",

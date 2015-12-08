@@ -1,0 +1,57 @@
+{
+  "title": "Dashboard",
+  "structure": "4-8",
+  "rows": [
+    {
+      "columns": [
+        {
+          "styleClass": "col-md-4",
+          "widgets": [
+            {
+              "type": "weather",
+              "config": {
+                "location": "New York"
+              },
+              "title": "Weather",
+              "titleTemplateUrl": "../src/templates/widget-title.html",
+              "wid": 3
+            },
+            {
+              "type": "weather",
+              "config": {
+                "location": "Hildesheim"
+              },
+              "title": "Weather",
+              "titleTemplateUrl": "../src/templates/widget-title.html",
+              "wid": 4
+            }
+          ],
+          "cid": 1
+        },
+        {
+          "styleClass": "col-md-8",
+          "widgets": [
+            {
+              "type": "iframe",
+              "config": {
+                "height": "420px"
+              },
+              "title": "iframe",
+              "titleTemplateUrl": "../src/templates/widget-title.html",
+              "wid": 6
+            },
+            {
+              "type": "randommsg",
+              "config": {},
+              "title": "Random Message",
+              "titleTemplateUrl": "../src/templates/widget-title.html",
+              "wid": 5
+            }
+          ],
+          "cid": 2
+        }
+      ]
+    }
+  ],
+  "titleTemplateUrl": "../src/templates/dashboard-title.html"
+}

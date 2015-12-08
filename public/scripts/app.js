@@ -43,8 +43,8 @@ angular.module('adfDynamicSample', [
         controllerAs: 'dashboard',
         templateUrl: 'partials/dashboard.html',
         resolve: {
-          data: function($route, storeService){
-            return storeService.get($route.current.params.id);
+          data: function($state, storeService){
+            return storeService.get($state.current.params.id);
           }
         }
       });
@@ -142,8 +142,8 @@ angular.module('adfDynamicSample', [
       });
     });
   })
-  .controller('dashboardCtrl', function($location, $rootScope, $scope, $routeParams, storeService, data){
-    this.name = $routeParams.id;
+  .controller('dashboardCtrl', function($location, $rootScope, $scope, $stateParams, storeService, data){
+    this.name = $stateParams.id;
     this.model = data;
 
     this.delete = function(id){

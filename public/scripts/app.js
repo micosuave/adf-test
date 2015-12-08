@@ -25,18 +25,20 @@
 'use strict';
 
 angular.module('adfDynamicSample', [
-    'adf', 'ngRoute', 'adf.structures.base',
+    'adf', 'ui.router', 'adf.structures.base',
     'adf.widget.clock', 'adf.widget.github', 'adf.widget.iframe',
     'adf.widget.linklist', 'adf.widget.markdown', 'adf.widget.news',
     'adf.widget.randommsg', 'adf.widget.version', 'adf.widget.weather',
     'adf.widget.testwidget','adf.widget.treewidget'
   ])
-  .config(function($routeProvider){
-    $routeProvider
-      .when('/boards', {
+  .config(function($stateProvider){
+    $stateProvider
+      
+      .state('boards', {
         templateUrl: 'partials/default.html'
       })
-      .when('/boards/:id', {
+      .state('board', {
+        url: '/boards/:id',
         controller: 'dashboardCtrl',
         controllerAs: 'dashboard',
         templateUrl: 'partials/dashboard.html',
@@ -45,10 +47,8 @@ angular.module('adfDynamicSample', [
             return storeService.get($route.current.params.id);
           }
         }
-      })
-      .otherwise({
-        redirectTo: '/boards'
       });
+      
   })
   .service('storeService', function($http, $q){
     return {
@@ -87,7 +87,7 @@ angular.module('adfDynamicSample', [
       },
       delete: function(id){
         var deferred = $q.defer();
-        $http.delete('sites/v1/store/' + id)
+        $http.delete('./v1/store/' + id)
           .success(function(data){
             deferred.resolve(data);
           })

@@ -41,12 +41,12 @@ angular.module('adfDynamicSample', [
       .state('board', {
         parent: 'boards',
         url: '/boards/:id',
-        views: {'@': {controller: 'dashboardCtrl',
+        views: {'': {controller: 'dashboardCtrl',
         controllerAs: 'dashboard',
         templateUrl: 'partials/dashboard.html'}},
         resolve: {
-          data: function($state, storeService){
-            return storeService.get($state.current.params.id);
+          data: function($stateParams, storeService){
+            return storeService.get($stateParams.id);
           }
         }
       });

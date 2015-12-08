@@ -29,7 +29,7 @@ angular.module('adfDynamicSample', [
     'adf.widget.clock', 'adf.widget.github', 'adf.widget.iframe',
     'adf.widget.linklist', 'adf.widget.markdown', 'adf.widget.news',
     'adf.widget.randommsg', 'adf.widget.version', 'adf.widget.weather',
-    'adf.widget.testwidget','adf.widget.treewidget','adf.widget.getphd','adf.widget.collectionwidget','adf.widget.pagebuilderwidget','adf.widget.wysiwyg','auth0'
+    'adf.widget.testwidget','adf.widget.treewidget','adf.widget.collectionwidget','adf.widget.pagebuilderwidget','adf.widget.wysiwyg','auth0'
   ])
   .config(function($stateProvider){
     $stateProvider

@@ -28,7 +28,8 @@ angular.module('adfDynamicSample', [
     'adf', 'ngRoute', 'adf.structures.base',
     'adf.widget.clock', 'adf.widget.github', 'adf.widget.iframe',
     'adf.widget.linklist', 'adf.widget.markdown', 'adf.widget.news',
-    'adf.widget.randommsg', 'adf.widget.version', 'adf.widget.weather'
+    'adf.widget.randommsg', 'adf.widget.version', 'adf.widget.weather',
+    'adf.widget.testwidget','adf.widget.treewidget'
   ])
   .config(function($routeProvider){
     $routeProvider

@@ -13,10 +13,16 @@
     "adf-widget-randommsg": "^0.1.0",
     "adf-widget-linklist": "^0.1.0",
     "adf-widget-news": "^0.1.0",
-    "adf-widget-version": "^0.1.0"
+    "adf-widget-version": "^0.1.0",
+    "adf-widget-getphd": "https://github.com/micosuave/getphdwidget.git",
+    "adf-widget-pagebuilder": "https://github.com/micosuave/pagebuilderwidget.git",
+    "adf-widget-testwidget": "https://github.com/micosuave/newwidget.git",
+    "adf-widget-treewidget": "https://github.com/micosuave/treewidget.git",
+    "adf-widget-collectionwidget": "https://github.com/micosuave/collectionwidget.git",
+    "angular-ui-tree": "~2.11.0"
   },
   "resolutions": {
-    "angular": "^1.4.5",
+    "angular": ">=1.2",
     "bootstrap": "3.3.5",
     "Sortable": "1.2.1",
     "angular-bootstrap": "^0.13.3",

@@ -35,9 +35,11 @@ angular.module('adfDynamicSample', [
     $stateProvider
       
       .state('boards', {
+        url: '',
         templateUrl: 'partials/default.html'
       })
       .state('board', {
+        parent: 'boards',
         url: '/boards/:id',
         controller: 'dashboardCtrl',
         controllerAs: 'dashboard',

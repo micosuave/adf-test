@@ -40,19 +40,15 @@ angular.module('adfDynamicSample', [
       })
       .state('boards',{
         parent: 'home',
-        url: '/boards',
+        url: '/',
         views: {'@home': {controller: 'dashboardCtrl',
         controllerAs: 'dashboard',
-        templateUrl: 'partials/dashboard.html'}},
-        resolve: {
-          data: function($stateParams, storeService, $rootScope){
-            return storeService.get($rootScope.authData.id);
-          }
-        }
+        templateUrl: 'partials/dashboard.html'}}
+        
       })
       .state('board', {
-        parent: 'boards',
-        url: '/:id',
+        parent: 'home',
+        url: '/boards/:id',
         views: {'@home': {controller: 'dashboardCtrl',
         controllerAs: 'dashboard',
         templateUrl: 'partials/dashboard.html'}},

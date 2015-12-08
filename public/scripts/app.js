@@ -41,9 +41,9 @@ angular.module('adfDynamicSample', [
       .state('board', {
         parent: 'boards',
         url: '/boards/:id',
-        controller: 'dashboardCtrl',
+        views: {'@': {controller: 'dashboardCtrl',
         controllerAs: 'dashboard',
-        templateUrl: 'partials/dashboard.html',
+        templateUrl: 'partials/dashboard.html'}},
         resolve: {
           data: function($state, storeService){
             return storeService.get($state.current.params.id);

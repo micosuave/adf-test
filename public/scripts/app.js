@@ -112,7 +112,7 @@ angular.module('adfDynamicSample', [
 		}
 	]
 )
-  .controller('navigationCtrl', function($scope, $q, $location, storeService){
+  .controller('navigationCtrl', function($scope, $q, $location, storeService, $state){
     var nav = this;
     nav.navCollapsed = true;
 
@@ -153,6 +153,7 @@ angular.module('adfDynamicSample', [
     $scope.$on('navChanged', function(){
       storeService.getAll().then(function(data){
         nav.items = data;
+        $state.reload();
       });
     });
   })

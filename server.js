@@ -5,18 +5,19 @@ var fs = require('fs');
 var app = express();
 
 var encoding = 'utf8';
-var storeDir = __dirname + '/store/';
 
-if (!fs.existsSync(storeDir)){
-  console.log("could not find store directory at %s", storeDir);
-  process.exit(1);
-}
+
+// if (!fs.existsSync(storeDir)){
+//   console.log("could not find store directory at %s", storeDir);
+//   process.exit(1);
+// }
 
 app.use(compression());
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
 app.get('/v1/store', function(req, res, next){
+  var storeDir = path.join(process.cwd(), 'files', req.user._id);
   fs.readdir(storeDir, function(err, files){
     if (err) {
       return next(err);
@@ -37,6 +38,7 @@ app.get('/v1/store', function(req, res, next){
 });
 
 app.get('/v1/store/:id', function(req, res, next){
+  var storeDir = path.join(process.cwd(), 'files', req.user._id);
   fs.readFile(storeDir + req.params.id + '.json', encoding, function(err, data){
     if (err) {
       return next(err);
@@ -47,6 +49,7 @@ app.get('/v1/store/:id', function(req, res, next){
 });
 
 app.post('/v1/store/:id', function(req, res, next){
+ var storeDir = path.join(process.cwd(), 'files', req.user._id);
   fs.writeFile(
     storeDir + req.params.id + '.json',
     JSON.stringify(req.body, undefined, 2),
@@ -60,6 +63,7 @@ app.post('/v1/store/:id', function(req, res, next){
 });
 
 app.delete('/v1/store/:id', function(req, res, next){
+ var storeDir = path.join(process.cwd(), 'files', req.user._id);
   fs.unlink(storeDir + req.params.id + '.json', function(err){
     if (err) {
       return next(err);

@@ -1,49 +1,9 @@
 {
   "title": "Art",
-  "structure": "12/6-6/12",
+  "structure": "6-6",
   "rows": [
     {
       "columns": [
-        {
-          "styleClass": "col-md-12",
-          "widgets": [
-            {
-              "type": "linklist",
-              "config": {},
-              "title": "Links",
-              "titleTemplateUrl": "../src/templates/widget-title.html",
-              "wid": 9
-            }
-          ],
-          "cid": 4
-        }
-      ]
-    },
-    {
-      "columns": [
-        {
-          "styleClass": "col-md-6",
-          "widgets": [
-            {
-              "type": "iframe",
-              "config": {
-                "height": "420px",
-                "url": "https://lexlab.io/"
-              },
-              "title": "iframe",
-              "titleTemplateUrl": "../src/templates/widget-title.html",
-              "wid": 6
-            },
-            {
-              "type": "randommsg",
-              "config": {},
-              "title": "Random Message",
-              "titleTemplateUrl": "../src/templates/widget-title.html",
-              "wid": 5
-            }
-          ],
-          "cid": 5
-        },
         {
           "styleClass": "col-md-6",
           "widgets": [
@@ -55,18 +15,45 @@
               "title": "Prior Art",
               "titleTemplateUrl": "../src/templates/widget-title.html",
               "wid": 8
+            },
+            {
+              "type": "linklist",
+              "config": {
+                "links": [
+                  {
+                    "title": "asdf"
+                  }
+                ]
+              },
+              "title": "Links",
+              "titleTemplateUrl": "../src/templates/widget-title.html",
+              "wid": 9
             }
           ],
-          "cid": 6
-        }
-      ]
-    },
-    {
-      "columns": [
+          "cid": 1
+        },
         {
-          "styleClass": "col-md-12",
-          "widgets": [],
-          "cid": 7
+          "styleClass": "col-md-6",
+          "widgets": [
+            {
+              "type": "iframe",
+              "config": {
+                "height": "320px",
+                "url": "https://lexlab.io/"
+              },
+              "title": "view",
+              "titleTemplateUrl": "../src/templates/widget-title.html",
+              "wid": 6
+            },
+            {
+              "type": "randommsg",
+              "config": {},
+              "title": "Random Message",
+              "titleTemplateUrl": "../src/templates/widget-title.html",
+              "wid": 5
+            }
+          ],
+          "cid": 2
         }
       ]
     }

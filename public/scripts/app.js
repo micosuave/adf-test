@@ -174,7 +174,9 @@ angular.module('adfDynamicSample', [
       $location.path('/');
       $rootScope.$broadcast('navChanged');
     };
-
+    this.widgetFilter = function(widget, type) {
+                return type.indexOf('curationwidget') >= 0 || type === 'treewidget' || type === 'getphd' || type === 'testwidget' || type === 'pagebuilder' || type === 'iframe' || type === 'wysiwyg' || type === 'uiView' || type === 'column';
+            };
     $scope.$on('adfDashboardChanged', function(event, name, model) {
       storeService.set(name, model);
     });

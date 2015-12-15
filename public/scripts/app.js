@@ -167,7 +167,7 @@ angular.module('adfDynamicSample', [
   })
   .controller('dashboardCtrl', function($location, $rootScope, $scope, $stateParams, storeService, data){
     this.name = $stateParams.id;
-    this.model = data;
+    this.model = data.dashboard.model;
 
     this.delete = function(id){
       storeService.delete(id);

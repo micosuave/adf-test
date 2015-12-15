@@ -1,0 +1,60 @@
+{
+  "application": "11745932",
+  "dashboard": {
+    "model": {
+      "rows": [
+        {
+          "columns": [
+            {
+              "cid": "Tue Dec 15 2015 17:29:44 GMT-0500 (EST)1",
+              "styleClass": "col-sm-6",
+              "widgets": [
+                {
+                  "config": {
+                    "height": "30em",
+                    "url": "https://cdn.filepicker.io/api/file/unitea3Tdm1HSRxhbioF"
+                  },
+                  "styleClass": "Applicant",
+                  "title": "Claims",
+                  "titleTemplateUrl": "{widgetsPath}/testwidget/src/title.html",
+                  "type": "iframe",
+                  "wid": "Tue Dec 15 2015 17:29:44 GMT-0500 (EST)5"
+                }
+              ]
+            },
+            {
+              "cid": "Tue Dec 15 2015 17:29:44 GMT-0500 (EST)10",
+              "styleClass": "col-sm-6",
+              "widgets": [
+                {
+                  "config": {
+                    "draftid": "-K5bkri-LZDim4GBTceC"
+                  },
+                  "styleClass": "Applicant",
+                  "title": "Claims",
+                  "titleTemplateUrl": "{widgetsPath}/testwidget/src/title.html",
+                  "type": "testwidget",
+                  "wid": "Tue Dec 15 2015 17:29:44 GMT-0500 (EST)15"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "structure": "ROAR-DEFAULT",
+      "title": "Claims",
+      "titleTemplateUrl": "../src/templates/dashboard-title.html"
+    }
+  },
+  "date": "2011-09-23",
+  "doccode": "CLM",
+  "filename": "11745932-2011-09-23-00004-CLM.pdf",
+  "id": "-K5bkri-LZDim4GBTceC",
+  "media": "https://cdn.filepicker.io/api/file/unitea3Tdm1HSRxhbioF",
+  "name": "Claims",
+  "styleClass": "Applicant",
+  "timestamp": 1450218651297,
+  "title": "Claims",
+  "$id": "-K5bkri-LZDim4GBTceC",
+  "$priority": null
+}

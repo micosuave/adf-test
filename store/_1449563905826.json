@@ -1,11 +1,11 @@
 {
-  "title": "New Page",
-  "structure": "4-8",
+  "title": "asdf",
+  "structure": "6-6",
   "rows": [
     {
       "columns": [
         {
-          "styleClass": "col-md-4",
+          "styleClass": "col-md-6",
           "widgets": [
             {
               "type": "news",
@@ -15,12 +15,12 @@
               "wid": 3
             }
           ],
-          "cid": 1
+          "cid": 3
         },
         {
-          "styleClass": "col-md-8",
+          "styleClass": "col-md-6",
           "widgets": [],
-          "cid": 2
+          "cid": 4
         }
       ]
     }

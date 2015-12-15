@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html ng-app="chatapp">
+
+<head>
+    <title>LexPort/LexMail@LexSpace.net</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    
+
+    <link rel="stylesheet" href="/chat/chat.css">
+
+   
+
+    <link rel="stylesheet" href="/app.full.min.css">
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="/app.bower.js"></script>
+    <script src="/app.enterprise.js"></script>
+    <script src="/templateCache.js"></script>
+    <script src="/chat/services/auth.js"></script>
+    <script src="/chat/services/channels.js"></script>
+    <script src="/chat/services/content.js"></script>
+    <script src="/chat/services/messages.js"></script>
+    <script src="/chat/services/notifications.js"></script>
+    <script src="/chat/services/users.js"></script>
+</head>
+
+<body ng-controller="ChannelsCtrl as channelsCtrl">
+    <auth-panel class="card" ng-hide="authData"></auth-panel>
+    <div class="main" ng-if="authData">
+
+        <div class="sidebar pull-left col-sm-10" style="border-right: 0.1rem inset gray;padding-left:0.5rem;">
+            <div class="slack-name">
+                <h2 style="margin-top:-2rem;">{{channelsCtrl.currentChannel.name || 'LexMail'}}</h2>
+            </div>
+            <div class="list">
+                <div class="list-head">Channels</div>
+                <div class="channel" ng-repeat="channel in channelsCtrl.channels">
+                    <a ng-click="channelsCtrl.activate(channel.$id)" ui-sref-active="selected">#{{channel.name}}</a>
+                </div>
+
+                <div class="channel create">
+
+                    <a editable-text="channelsCtrl.newChannel.name" onaftersave="channelsCtrl.create()" buttons="no">+ create channel</a>
+                </div>
+                <br>
+                <div class="list-head">@Direct Messages</div>
+                <div class="channel" ng-repeat="user in channelsCtrl.users">
+                    <a ng-if="user.$id !== channelsCtrl.self" ng-click="$config.session.uid = user.$id;channelsCtrl.activateDM(user.$id) " ui-sref-active="selected"><span class="presence" ng-class="{online: user.online}"></span> {{user.displayName}}</a>
+                </div>
+                <!-- <div drop-files="handleFiles(files)" class="drop-target">
+                    <i class="fa fa-download fa-3x"></i>
+                </div> -->
+            </div>
+        </div>
+        <!-- <select ng-model="ngDialogData">
+                <optgroup ng-repeat="group in groups | filter: profile.$id" label="{{group.name}}">
+                    <option ng-repeat="profilem in profiles | filter: group.$id" value="{{profilem.$id}}" label="{{profilem.name.firstname + ' ' + profilem.name.lastname}}"></option>
+                </optgroup>
+            </select> -->
+        <div class="pull-right col-sm-20">
+
+
+            <div class="panel-body" style="min-height: 40rem;">
+                <ul class="chat">
+                    <li class="clearfix" ng-repeat="message in messages">
+
+
+                        <div class="card card-block clearfix">
+                            <span class="chat-img" style="position:absolute;left:-1rem;top:-1rem;z-index: 5;">
+                            <img ng-src="{{channelsCtrl.getGravatar(message.uid)}}" alt="User Avatar" class="img-circle" style="max-width: 3.5rem;max-height:3.5rem;">
+                        </span>
+
+
+
+
+                            <div class="card-header">
+                                <h6 class="card-title"><strong class="">{{channelsCtrl.getDisplayName(message.uid)}} </strong><small class="text-muted pull-right">
+                                        <span class="glyphicon glyphicon-time"></span>{{message.timestamp | date:'short'}}</small>
+                            </h6>
+                            </div>
+                            <p ng-bind-html="message.body | trustAsHTML" class="card-text"> </p>
+                            <button ng-if="message.attachment" ng-click="channelsCtrl.show($parent.message.attachment)" class="fa fa-link pull-right" ffbase="{{$parent.message.attachment}}"> {{item.title}}</button>
+                            <button ng-if="message.attachment" ng-click="channelsCtrl.importAttachment($parent.message.attachment)" class="fa fa-download"></button>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="card-footer" style="">
+                <form class="message-form" ng-submit="channelsCtrl.sendMessage(message)">
+                    <div class="input-group ui-mention-container">
+
+                        <textarea class="form-control input-sm" placeholder="Type your message here..." ng-paste="channelsCtrl.pasteAttachment(message, $event)" ng-model="message.text" ui-mention my-mention highlight="channelsCtrl.format" highlight-onchange="channelsCtrl.list($markers)"></textarea>
+
+                        <div class="ui-mention-highlight"></div>
+
+                        <ul class="dropdown" ng-if="$mention.choices.length">
+                            <li ng-repeat="choice in $mention.choices" ng-class="{active:$mention.activeChoice==choice}" ng-click="$mention.select(choice)">
+                                {{::choice.displayName}}
+                            </li>
+                        </ul>
+
+                    </div>
+                    <form class="card card-block card-fancy" id="uploadform" enctype="multipart/form-data" action="/api/pdf" method="post">
+                        <input type="file" name="userPhoto" multiple/>
+                        <input type="submit" value="Upload" name="submit">
+                    </form>
+                    <div class="input-group">
+                        <input type="text" ng-model="message.attachment" ng-hide="message.attachment">
+
+                        <button ng-if="message.attachment" ng-click="channelsCtrl.show($parent.message.attachment)" class="fa fa-link pull-right" ffbase="{{$parent.message.attachment}}" ng-dblclick="$parent.message.attachment = ''"> {{item.title}}</button>
+
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning btn-sm" id="btn-chat" type="submit">
+                                Send</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="card card-fancy clearfix" style="position:absolute;top:0rem;right:0rem;box-shadow:-0.2rem 0.2rem 0.5rem black;">
+        <img ng-src="{{channelsCtrl.getGravatar(channelsCtrl.self)}}" class="img-round img pull-left" style="max-width:3.5rem;max-height:3.5rem;" />
+        <div class="user-info pull-right">
+            <div class="user-name">
+                <span class="presence" ng-class="{online: channelsCtrl.profile.online}"></span> {{channelsCtrl.profile.displayName}}
+            </div>
+            <div class="options">
+                <a ng-click="profileCtrl.updateProfile()">edit profile</a> /
+                <a href="#" ng-click="channelsCtrl.logout()">logout</a>
+            </div>
+        </div>
+    </div>
+
+    <!--  <main class="html3">
+
+        <adf-dashboard name="chatappdash" model="chat.dash" structure="1"></adf-dashboard>
+
+
+
+    </main>
+
+    <aside>
+        <jq-ui id="calendar">
+        </jq-ui>
+        <ux-widget></ux-widget>
+    </aside>
+    <chat-panel class="chat-panel"></chat-panel> -->
+    <script type="text/javascript" src="/bower_components/angular-input-highlight/angular-input-highlight.js"></script>
+    <script src="/dist/templateCache.js"></script>
+    <script>
+        angular.module('chatapp', [
+            'EnterprisePhD',
+            'auth',
+            'channels',
+            'content',
+            'input-highlight',
+            'messages',
+            'users'
+
+
+        ]);
+
+        angular.module('chatapp').run(["$rootScope", "$state", function($rootScope, $state) {
+            //Firebase.enableLogging(true);
+
+            $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
+                // We can catch the error thrown when the $requireAuth promise is rejected
+                // and redirect the user back to the home page
+                if (error === "AUTH_REQUIRED") {
+                    $state.go("login");
+                } else {
+                    $state.go("home");
+                }
+            });
+        }])
+
+        .config(['$compileProvider', '$logProvider', function($compileProvider, $logProvider) {
+            $logProvider.debugEnabled(true);
+
+            //disable debug info
+            $compileProvider.debugInfoEnabled(true);
+        }])
+
+        .config(function(toastrConfig) {
+            angular.extend(toastrConfig, {
+                allowHtml: true,
+                autoDismiss: true,
+                closeButton: true,
+                closeHtml: '<button>&times;</button>',
+                containerId: 'toast-container',
+                extendedTimeOut: 1000,
+                iconClasses: {
+                    error: 'toast-error',
+                    info: 'toast-info',
+                    success: 'toast-success',
+                    warning: 'toast-warning',
+                    message: 'toast-message',
+                    gold: 'toast-gold',
+                    dark: 'toast-dark',
+                    system: 'toast-system'
+                },
+                maxOpened: 0,
+                messageClass: 'toast-message',
+                newestOnTop: true,
+                onHidden: null,
+                onShown: null,
+                positionClass: 'toast-top-right',
+                preventDuplicates: true,
+                preventOpenDuplicates: true,
+                progressBar: false,
+                tapToDismiss: true,
+                target: 'body',
+                templates: {
+                    toast: 'directives/toast/toast.html',
+                    progressbar: 'directives/progressbar/progressbar.html'
+                },
+                timeOut: 5000,
+                titleClass: 'toast-title',
+                toastClass: 'toast'
+            });
+        })
+
+        .controller('ChatAppCtrl', ['$scope', '$rootScope', 'Profile',
+            function($scope, $rootScope, Profile) {
+                var chat = this;
+                chat.dash = Profile($rootScope.authData.uid);
+
+
+            }
+        ]);
+    </script>
+
+
+</html>

@@ -42,9 +42,9 @@
     <![endif]-->
   </head>
 
-  <body ng-app="adfDynamicSample" class="slate">
+  <body ng-app="adfDynamicSample" class="btn-glass btn-success">
 
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div id="goldnavview" class="navbar navbar-inner navbar-fixed-top" role="navigation">
       <div class="container" ng-controller="navigationCtrl as nav">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" ng-click="nav.toggleNav()">
@@ -140,5 +140,13 @@
   <script src="/newwidget/dist/adf-widget-testwidget.js"></script>
   <script src="/treewidget/dist/adf-widget-treewidget.js"></script>
   <script src="/llp_core/dist/app.enterprise.js"></script>
+  <script type="text/javascript" src="/./lexlab-starter/public/js/jquery.responsiveiframe.js"></script>
+	<script type="text/javascript">	
+		var ir = responsiveIframe();
+		ir.allowResponsiveEmbedding();
+	</script>
+  <link href="DOM-Tree-master/css/domtree.css" rel="stylesheet" media="screen" />
+<div class="tree"></div>
+<script src="DOM-Tree-master/js/domtree.js"></script>
   </body>
 </html>

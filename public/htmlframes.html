@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Using Frames</title>
+
+<!-- Local stylesheets -->	
+				 <link rel="stylesheet" href="_LIONdemo/_css/main.css">
+
+<!-- Essential JavaScript/jquery Libraries -->
+				  <script type="text/javascript" charset="utf-8" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+				  <script type="text/javascript" charset="utf-8" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+				  <script type="text/javascript" charset="utf-8" src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+
+<!-- EDGE COMMONES and other Adobe Configurations -->
+			     <script type="text/javascript" charset="utf-8" src="http://cdn.edgecommons.org/an/1.1.2/js/min/EdgeCommons.js"></script>
+
+<!-- Any more Scripts or Styles to preload? -->
+	</head>
+		<frameset rows="100,*,50">
+					  <frame id="headerframe" src="./index.html" frameborder="1" name="Header"/>
+					 <frameset cols="300,*">
+					  	<frame src="https://lexlab.io/files" frameborder="1"/>
+					  	<frameset rows="60,*">
+								<frame src="/admin" frameborder="1"/>
+								<frame src="/home" frameborder="1"/>
+					  	</frameset>
+					  	
+					  </frameset>
+				<frame src="./index.html" frameborder="1" />
+		</frameset> 
+			
+	
+	
+	<body>
+	
+		<section id="header" width="1280px" height="150px"><img width="1200px" height="150px" src="_LIONdemo/images/banner.png"</section>
+		<div>
+	
+		</div>
+		<div style="display: block;" id="maincontent">
+					<table><colgroup></colgroup><tr><td></td><td></td></tr></table>
+			<h1>Hello there!</h1>
+			
+			<p> This is my paragraph.</p>
+	
+	</div>
+	
+	
+	<div id="sideBar">
+		<h3>Sidebar Content</h3>
+		<p>Content goes here</p>
+		<!--iframe src="../_secondary.html" /-->
+		<p class="clear" />
+	</div> <!--sideBar-->
+	<p class="clear" />
+	</div> <!-- content -->
+</div> <!-- outerDiv -->
+
+<div id="footer">
+    <p>&copy; Lion Legal Products, Inc. &nbsp;&nbsp;
+        <a href="privacy.htm">Privacy Policy</a> |
+        <a href="terms.htm">Terms and Conditions</a>
+    </p>
+</div> <!--footer-->
+	
+	
+	
+	
+	</body>
+</html>

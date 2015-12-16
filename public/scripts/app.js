@@ -34,19 +34,19 @@ angular.module('adfDynamicSample', [
   .config(function($stateProvider){
     $stateProvider
       
-      .state('home', {
+      .state('adfhome', {
         url: '',
         templateUrl: 'partials/default.html'
       })
-      .state('boards',{
-        parent: 'home',
+      .state('adfboards',{
+        parent: 'adfhome',
         url: '/',
         views: {'@home': {controller: 'dashboardCtrl',
         controllerAs: 'dashboard',
         templateUrl: 'partials/dashboard.html'}}
         
       })
-      .state('board', {
+      .state('adfboard', {
         parent: 'home',
         url: '/boards/:id',
         views: {'@home': {controller: 'dashboardCtrl',

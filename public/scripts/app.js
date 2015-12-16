@@ -28,17 +28,17 @@ angular.module('adfDynamicSample', [
     'adf', 'ui.router', 'adf.structures.base',
     'adf.widget.clock', 'adf.widget.github', 'adf.widget.iframe',
     'adf.widget.linklist', 'adf.widget.markdown', 'adf.widget.news',
-    'adf.widget.randommsg', 'adf.widget.version', 'adf.widget.weather','adf.widget.getphd','EnterprisePhD',
+    'adf.widget.randommsg', 'adf.widget.version', 'adf.widget.weather','adf.widget.getphd',
     'adf.widget.testwidget','adf.widget.treewidget','adf.widget.collectionwidget','adf.widget.pagebuilder','adf.widget.wysiwyg'
   ])
   .config(function($stateProvider){
     $stateProvider
       
-      .state('adfhome', {
+      .state('home', {
         url: '',
         templateUrl: 'partials/default.html'
       })
-      .state('adfboards',{
+      .state('boards',{
         parent: 'adfhome',
         url: '/',
         views: {'@home': {controller: 'dashboardCtrl',
@@ -46,7 +46,7 @@ angular.module('adfDynamicSample', [
         templateUrl: 'partials/dashboard.html'}}
         
       })
-      .state('adfboard', {
+      .state('board', {
         parent: 'home',
         url: '/boards/:id',
         views: {'@home': {controller: 'dashboardCtrl',

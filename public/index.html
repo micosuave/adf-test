@@ -1,120 +1,125 @@
 <!DOCTYPE html>
 
 <html lang="en" class="html" style="font-size:10px;">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="dashboard sample app">
-    <meta name="author" content="Sebastian Sdorra">
 
-    <title>LexLab</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="dashboard sample app">
+  <meta name="author" content="Sebastian Sdorra">
 
-    <!-- build:css css/sample.min.css -->
-    <!-- Bootstrap core CSS -->
-    <!--<link href="components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">-->
+  <title>LexLab</title>
 
-    <!-- dashboard style -->
-    <link href="components/angular-dashboard-framework/dist/angular-dashboard-framework.min.css" rel="stylesheet">
-    <link href="components/adf-widget-clock/dist/adf-widget-clock.css" rel="stylesheet">
-    <link href="components/adf-widget-iframe/dist/adf-widget-iframe.css" rel="stylesheet">
-    <link href="/llp_core/dist/app.full.min.css" rel="stylesheet">
-<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+  <!-- build:css css/sample.min.css -->
+  <!-- Bootstrap core CSS -->
+  <!--<link href="components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">-->
+
+  <!-- dashboard style -->
+  <link href="components/angular-dashboard-framework/dist/angular-dashboard-framework.min.css" rel="stylesheet">
+  <link href="components/adf-widget-clock/dist/adf-widget-clock.css" rel="stylesheet">
+  <link href="components/adf-widget-iframe/dist/adf-widget-iframe.css" rel="stylesheet">
+  <link href="/llp_core/dist/app.full.min.css" rel="stylesheet">
+  <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.13/d3.min.js" data-build="exclude">
-</script>
-<script src="https://apis.google.com/js/client.js"></script>
-<script src="https://apis.google.com/js/api.js"></script>
-<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-<script src="/lexlab-starter/public/js/jquery.pageslide.js"></script>
-<script type="text/javascript" src="/llp_core/bower_components/filepicker-js/filepicker.js"></script>
-</script>
-    <style>
+
+  </script>
+  <script src="https://apis.google.com/js/client.js"></script>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+  <script src="/lexlab-starter/public/js/jquery.pageslide.js"></script>
+  <script type="text/javascript" src="/llp_core/bower_components/filepicker-js/filepicker.js"></script>
+  </script>
+  <style>
     body {
       padding-top: 60px;
     }
-    </style>
-    <!-- endbuild -->
+  </style>
+  <!-- endbuild -->
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
-    <!--[if lte IE 8]>
+  <!--[if lte IE 8]>
       <script>
         document.createElement('adf-dashboard');
         document.createElement('adf-widget');
         document.createElement('adf-widget-content');
       </script>
     <![endif]-->
-  </head>
+</head>
 
-  <body ng-app="adfDynamicSample" class="card card-block card-thick card-rounded sub-independent">
+<body ng-app="adfDynamicSample" class="card card-block card-thick card-rounded sub-independent">
 
-    <div id="goldnavview" class="" role="navigation">
-      <div class="" ng-controller="navigationCtrl as nav">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" ng-click="nav.toggleNav()">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="card-title lead" href="/">LexSpace&trade;</a>
-        </div>
-        <div collapse="nav.navCollapsed" class="collapse navbar-collapse">
-          <ul class="nav navbar-tabs tabs">
-            <li class="tab" ng-class="nav.navClass('boards/' + item.id)" ng-repeat="item in nav.items | orderBy: title">
-              <a ui-sref="adfboard({id: item.id})">{{item.title}}</a>
-            </li>
-            <li>
-              <a style="cursor: pointer;" ng-click="nav.create()">Create</a>
-            </li>
-          </ul>
-        </div><!--/.nav-collapse -->
+  <div id="goldnavview" class="" role="navigation">
+    <div class="" ng-controller="navigationCtrl as nav">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" ng-click="nav.toggleNav()">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="card-title lead" href="/">LexSpace&trade;</a>
       </div>
+      <div collapse="nav.navCollapsed" class="">
+        <ul class=" tabs">
+          <li class="tab" ng-class="nav.navClass('boards/' + item.id)" ng-repeat="item in nav.items | orderBy: title">
+            <a ui-sref="board({id: item.id})">{{item.title}}</a>
+          </li>
+          <li>
+            <a style="cursor: pointer;" ng-click="nav.create()">Create</a>
+          </li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
     </div>
+  </div>
 
-    
-<div class="container-fluid">
-      <ui-view style="width:100%;height: 650px;"/>
-</div>
-   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="/llp_core/dist/app.bower.js"></script>
+
+  <div class="container-fluid">
+    <ui-view style="width:100%;height: 650px;" />
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="/llp_core/dist/app.bower.js"></script>
   <script data-require="jszip@2.4.0" data-semver="2.4.0" src="https://cdn.rawgit.com/Stuk/jszip/v2.4.0/dist/jszip.js" data-build="exclude">
-</script>
-<!-- We use client cookies to save the user credentials-->
-<script src="//code.angularjs.org/1.2.16/angular-cookies.min.js" data-build="exclude"></script>
-<!-- Auth0 Lock script and AngularJS module-->
-<script src="//cdn.auth0.com/js/lock-7.9.min.js" data-build="exclude"></script>
-<!-- angular-jwt and angular-storage-->
-<script src="/llp_core/ngGAPI-master/nggapi_lib/dist_lib/nggapi_base.min.js"></script>
-<script src="/llp_core/ngAnnotateText/ng-annotate-text-latest.js"></script>
-<script src="/llp_core/node_modules/papaparse/papaparse.js"></script>
-<script src="/llp_core/node_modules/angular-file-upload/dist/angular-file-upload.js"></script>
-<script src="/llp_core/node_modules/angular-local-storage/dist/angular-local-storage.js"></script>
-<script src="/llp_core/bower_components/ng-file-upload/ng-file-upload.js"></script>
-<script src="/llp_core/bower_components/ng-sortable/dist/ng-sortable.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-touch.js"></script>
-<script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js" data-build="exclude"></script>
-<script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js" data-build="exclude"></script>
-<script src="//cdn.auth0.com/w2/auth0-angular-4.js" data-build="exclude"></script>
-<script src="https://rawgit.com/alexk111/ngImgCrop/master/compile/unminified/ng-img-crop.js" data-build="exclude"></script>
-<script src="/llp_core/dist/app.enterprise.js" data-build="exclude"></script>
-<script src="/newwidget/dist/adf-widget-testwidget.js" data-build="exclude"></script>
-<script src="/getphdwidget/dist/adf-widget-getphd.js" data-build="exclude"></script>
-<script src="/pagebuilderwidget/dist/adf-widget-pagebuilder.js" data-build="exclude"></script>
-<script src="/collectionwidget/dist/adf-widget-collectionwidget.js" data-build="exclude"></script>
-<script src="/treewidget/dist/adf-widget-treewidget.js" data-build="exclude"></script>
-<script src="/llp_core/dist/templateCache.js" data-build="exclude"></script>
-<script src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="si21h6tw2o3msis"></script>
-<script type="text/javascript" src="/llp_core/bower_components/angular-filepicker/dist/angular_filepicker.js"></script>
-<script>
-  angular.module('authentication').value('$firebaseToken', '');
-</script>
-<!--</script>
-    <!-- components
+
+  </script>
+  <!-- We use client cookies to save the user credentials-->
+  <script src="//code.angularjs.org/1.2.16/angular-cookies.min.js" data-build="exclude"></script>
+  <!-- Auth0 Lock script and AngularJS module-->
+  <script src="//cdn.auth0.com/js/lock-7.9.min.js" data-build="exclude"></script>
+  <!-- angular-jwt and angular-storage-->
+  <script src="/llp_core/ngGAPI-master/nggapi_lib/dist_lib/nggapi_base.min.js"></script>
+  <script src="/llp_core/ngAnnotateText/ng-annotate-text-latest.js"></script>
+  <script src="/llp_core/node_modules/papaparse/papaparse.js"></script>
+  <script src="/llp_core/node_modules/angular-file-upload/dist/angular-file-upload.js"></script>
+  <script src="/llp_core/node_modules/angular-local-storage/dist/angular-local-storage.js"></script>
+  <script src="/llp_core/bower_components/ng-file-upload/ng-file-upload.js"></script>
+  <script src="/llp_core/bower_components/ng-sortable/dist/ng-sortable.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-touch.js"></script>
+  <script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js" data-build="exclude"></script>
+  <script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js" data-build="exclude"></script>
+  <script src="//cdn.auth0.com/w2/auth0-angular-4.js" data-build="exclude"></script>
+  <script src="https://rawgit.com/alexk111/ngImgCrop/master/compile/unminified/ng-img-crop.js" data-build="exclude"></script>
+  <script src="/llp_core/dist/app.enterprise.js" data-build="exclude"></script>
+  <script src="/newwidget/dist/adf-widget-testwidget.js" data-build="exclude"></script>
+  <script src="/getphdwidget/dist/adf-widget-getphd.js" data-build="exclude"></script>
+  <script src="/pagebuilderwidget/dist/adf-widget-pagebuilder.js" data-build="exclude"></script>
+  <script src="/collectionwidget/dist/adf-widget-collectionwidget.js" data-build="exclude"></script>
+  <script src="/treewidget/dist/adf-widget-treewidget.js" data-build="exclude"></script>
+  <script src="/llp_core/dist/templateCache.js" data-build="exclude"></script>
+  <script src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="si21h6tw2o3msis"></script>
+  <script type="text/javascript" src="/llp_core/bower_components/angular-filepicker/dist/angular_filepicker.js"></script>
+  <script>
+    angular.module('authentication').value('$firebaseToken', '');
+
+  </script>
+ 
+    <!-- components-->
     <script type="text/javascript" src="components/Sortable/Sortable.min.js"></script>
     <script type="text/javascript" src="components/angular/angular.min.js"></script>
     <script type="text/javascript" src="components/angular-route/angular-route.min.js"></script>
@@ -125,40 +130,40 @@
     <!-- scripts -->
     <script type="text/javascript" src="scripts/app.js"></script>
 
-    <!-- structures
+    <!-- structures -->
     <script type="text/javascript" src="components/adf-structures-base/dist/adf-structures-base.min.js"></script>
 
-    <!-- clock 
+    <!-- clock -->
     <script type="text/javascript" src="components/moment/min/moment.min.js"></script>
     <script type="text/javascript" src="components/adf-widget-clock/dist/adf-widget-clock.js"></script>
 
-    <!-- github 
+    <!-- github -->
     <script type="text/javascript" src="components/highcharts/adapters/standalone-framework.js"></script>
     <script type="text/javascript" src="components/highcharts/highcharts.js"></script>
     <script type="text/javascript" src="components/highcharts-ng/dist/highcharts-ng.js"></script>
     <script type="text/javascript" src="components/adf-widget-github/dist/adf-widget-github.js"></script>
 
-    <!-- iframe 
+    <!-- iframe -->
     <script type="text/javascript" src="components/adf-widget-iframe/dist/adf-widget-iframe.js"></script>
 
-    <!-- linklist 
+    <!-- linklist -->
     <script type="text/javascript" src="components/adf-widget-linklist/dist/adf-widget-linklist.js"></script>
 
-    <!-- markdown 
+    <!-- markdown -->
     <script type="text/javascript" src="components/showdown/compressed/Showdown.js"></script>
     <script type="text/javascript" src="components/angular-markdown-directive/markdown.js"></script>
     <script type="text/javascript" src="components/adf-widget-markdown/dist/adf-widget-markdown.js"></script>
 
-    <!-- news 
+    <!-- news -->
     <script type="text/javascript" src="components/adf-widget-news/dist/adf-widget-news.js"></script>
 
-    <!-- randommsg 
+    <!-- randommsg -->
     <script type="text/javascript" src="components/adf-widget-randommsg/dist/adf-widget-randommsg.js"></script>
 
-    <!-- version 
+    <!-- version -->
     <script type="text/javascript" src="components/adf-widget-version/dist/adf-widget-version.js"></script>
 
-    <!-- weather 
+    <!-- weather  -->
     <script type="text/javascript" src="components/adf-widget-weather/dist/adf-widget-weather.js"></script>
   
   <script src='/llp_core/node_modules/angular-local-storage/dist/angular-local-storage.js'></script>
@@ -185,8 +190,9 @@
 		var ir = responsiveIframe();
 		ir.allowResponsiveEmbedding();
 	</script>-->
-  <!--<link href="DOM-Tree-master/css/domtree.css" rel="stylesheet" media="screen" />-->
-<!--<div class="tree"></div>-->
-<!--<script src="DOM-Tree-master/js/domtree.js"></script>-->
-  </body>
+    <!--<link href="DOM-Tree-master/css/domtree.css" rel="stylesheet" media="screen" />-->
+    <!--<div class="tree"></div>-->
+    <!--<script src="DOM-Tree-master/js/domtree.js"></script>-->
+</body>
+
 </html>

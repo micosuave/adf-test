@@ -16,8 +16,8 @@
 
     <!-- dashboard style -->
     <link href="components/angular-dashboard-framework/dist/angular-dashboard-framework.min.css" rel="stylesheet">
-    <link href="components/adf-widget-clock/dist/adf-widget-clock.min.css" rel="stylesheet">
-    <link href="components/adf-widget-iframe/dist/adf-widget-iframe.min.css" rel="stylesheet">
+    <link href="components/adf-widget-clock/dist/adf-widget-clock.css" rel="stylesheet">
+    <link href="components/adf-widget-iframe/dist/adf-widget-iframe.css" rel="stylesheet">
     <link href="/llp_core/dist/app.full.min.css" rel="stylesheet">
     
     <style>
@@ -44,8 +44,8 @@
 
   <body ng-app="adfDynamicSample" class="card card-block card-thick card-rounded sub-independent">
 
-    <div id="goldnavview" class="nav navbar navbar-nav navbar-fixed-top" role="navigation">
-      <div class="container  nav navbar navbar-nav navbar-inner" ng-controller="navigationCtrl as nav">
+    <div id="goldnavview" class="ngDialogTab nav tabs  navbar-fixed-top" role="navigation">
+      <div class="nav navtabs navbar-tabs navbar-inner" ng-controller="navigationCtrl as nav">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" ng-click="nav.toggleNav()">
             <span class="sr-only">Toggle navigation</span>
@@ -53,10 +53,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">LexSpace&trade;</a>
+          <a class="card-title lead" href="/">LexSpace&trade;</a>
         </div>
         <div collapse="nav.navCollapsed" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-tabs">
             <li ng-class="nav.navClass('boards/' + item.id)" ng-repeat="item in nav.items | orderBy: title">
               <a ui-sref="board({id: item.id})">{{item.title}}</a>
             </li>
@@ -140,7 +140,7 @@
   <script src="/newwidget/dist/adf-widget-testwidget.js"></script>
   <script src="/treewidget/dist/adf-widget-treewidget.js"></script>
   <script src="/llp_core/dist/app.enterprise.js"></script>
-  <script type="text/javascript" src="/./lexlab-starter/public/js/jquery.responsiveiframe.js"></script>
+  <script type="text/javascript" src="/lexlab-starter/public/js/jquery.responsiveiframe.js"></script>
 	<script type="text/javascript">	
 		var ir = responsiveIframe();
 		ir.allowResponsiveEmbedding();

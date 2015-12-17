@@ -1,2 +1,13 @@
-<h1>LEXLAB</h1>
-<ui-view></ui-view>
+
+<ui-view><frameset rows="100,*,50">
+					  <frame id="headerframe" src="./index.html" frameborder="1" name="Header" class="panelheadblue"/>
+					 <frameset cols="300,*">
+					  	<frame src="https://lexlab.io/files" frameborder="1" class="card"/>
+					  	<!--<frameset rows="60,*">
+								<frame src="/admin" frameborder="1"/>
+								<frame src="/home" frameborder="1"/>
+					  	</frameset>-->
+					  	<frame src="../chat/index.html" frameborder="1" class="card"/>
+					  </frameset>
+				<frame src="./index.html" frameborder="1" class="slate"/>
+		</frameset> </ui-view>

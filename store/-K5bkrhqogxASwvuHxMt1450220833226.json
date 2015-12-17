@@ -1,60 +1,33 @@
 {
-  "application": "11745932",
-  "dashboard": {
-    "model": {
-      "rows": [
+  "rows": [
+    {
+      "columns": [
         {
-          "columns": [
+          "cid": "Tue Dec 15 2015 17:29:44 GMT-0500 (EST)1",
+          "styleClass": "col-sm-6",
+          "widgets": [
             {
-              "cid": "Tue Dec 15 2015 17:29:44 GMT-0500 (EST)1",
-              "styleClass": "col-sm-6",
-              "widgets": [
-                {
-                  "config": {
-                    "height": "30em",
-                    "url": "https://cdn.filepicker.io/api/file/olMzjF88ReWYAY7X44ij"
-                  },
-                  "styleClass": "Applicant",
-                  "title": "Amendment/Req Reconsideration-After Non-Final Reject",
-                  "titleTemplateUrl": "{widgetsPath}/testwidget/src/title.html",
-                  "type": "iframe",
-                  "wid": "Tue Dec 15 2015 17:29:44 GMT-0500 (EST)5"
-                }
-              ]
-            },
-            {
-              "cid": "Tue Dec 15 2015 17:29:44 GMT-0500 (EST)10",
-              "styleClass": "col-sm-6",
-              "widgets": [
-                {
-                  "config": {
-                    "draftid": "-K5bkrhqogxASwvuHxMt"
-                  },
-                  "styleClass": "Applicant",
-                  "title": "Amendment/Req Reconsideration-After Non-Final Reject",
-                  "titleTemplateUrl": "{widgetsPath}/testwidget/src/title.html",
-                  "type": "testwidget",
-                  "wid": "Tue Dec 15 2015 17:29:44 GMT-0500 (EST)15"
-                }
-              ]
+              "config": {
+                "height": "30em",
+                "url": "https://cdn.filepicker.io/api/file/olMzjF88ReWYAY7X44ij"
+              },
+              "styleClass": "Applicant",
+              "title": "Amendment/Req Reconsideration-After Non-Final Reject",
+              "titleTemplateUrl": "{widgetsPath}/testwidget/src/title.html",
+              "type": "iframe",
+              "wid": "Tue Dec 15 2015 17:29:44 GMT-0500 (EST)5"
             }
           ]
+        },
+        {
+          "cid": "Tue Dec 15 2015 17:29:44 GMT-0500 (EST)10",
+          "styleClass": "col-sm-6",
+          "widgets": []
         }
-      ],
-      "structure": "ROAR-DEFAULT",
-      "title": "Amendment/Req Reconsideration-After Non-Final Reject",
-      "titleTemplateUrl": "../src/templates/dashboard-title.html"
+      ]
     }
-  },
-  "date": "2011-09-23",
-  "doccode": "A...",
-  "filename": "11745932-2011-09-23-00005-A....pdf",
-  "id": "-K5bkrhqogxASwvuHxMt",
-  "media": "https://cdn.filepicker.io/api/file/olMzjF88ReWYAY7X44ij",
-  "name": "Amendment/Req Reconsideration-After Non-Final Reject",
-  "styleClass": "Applicant",
-  "timestamp": 1450218649883,
+  ],
+  "structure": "ROAR-DEFAULT",
   "title": "Amendment/Req Reconsideration-After Non-Final Reject",
-  "$id": "-K5bkrhqogxASwvuHxMt",
-  "$priority": null
+  "titleTemplateUrl": "../src/templates/dashboard-title.html"
 }

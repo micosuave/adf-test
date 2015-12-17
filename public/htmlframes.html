@@ -6,7 +6,7 @@
 
 <!-- Local stylesheets -->	
 				 <link rel="stylesheet" href="_LIONdemo/_css/main.css">
-
+				 <link rel="stylesheet" href="/llp_core/dist/app.full.min.css" />
 <!-- Essential JavaScript/jquery Libraries -->
 				  <script type="text/javascript" charset="utf-8" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 				  <script type="text/javascript" charset="utf-8" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -18,16 +18,16 @@
 <!-- Any more Scripts or Styles to preload? -->
 	</head>
 		<frameset rows="100,*,50">
-					  <frame id="headerframe" src="./index.html" frameborder="1" name="Header"/>
+					  <frame id="headerframe" src="./index.html" frameborder="1" name="Header" class="panelheadblue"/>
 					 <frameset cols="300,*">
-					  	<frame src="https://lexlab.io/files" frameborder="1"/>
-					  	<frameset rows="60,*">
+					  	<frame src="https://lexlab.io/files" frameborder="1" class="card"/>
+					  	<!--<frameset rows="60,*">
 								<frame src="/admin" frameborder="1"/>
 								<frame src="/home" frameborder="1"/>
-					  	</frameset>
-					  	
+					  	</frameset>-->
+					  	<frame src="../chat/index.html" frameborder="1" class="card"/>
 					  </frameset>
-				<frame src="./index.html" frameborder="1" />
+				<frame src="./index.html" frameborder="1" class="slate"/>
 		</frameset> 
 			
 	

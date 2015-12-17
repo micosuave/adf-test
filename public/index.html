@@ -1,130 +1,166 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<!DOCTYPE html>
+<!--*
+ The MIT License
 
-<html lang="en" class="html" style="font-size:10px;">
+ Copyright (c) 2014, Sebastian Sdorra
 
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <base href="https://lexlab.io/sites/">
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
 
-  <title>LexLab</title>
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
 
-  <!-- build:css css/sample.min.css -->
-  <!-- Bootstrap core CSS -->
-  <!--<link href="components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">-->
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="dashboard sample app">
+    <meta name="author" content="Sebastian Sdorra">
 
-  <!-- dashboard style -->
-  <link href="./components/angular-dashboard-framework/dist/angular-dashboard-framework.min.css" rel="stylesheet">
-  <link href="./components/adf-widget-clock/dist/adf-widget-clock.css" rel="stylesheet">
-  <link href="./components/adf-widget-iframe/dist/adf-widget-iframe.css" rel="stylesheet">
-  <link href="/llp_core/dist/app.full.min.css" rel="stylesheet">
-  <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.13/d3.min.js" data-build="exclude">
+    <title>Dashboard</title>
+<script src="./lexlab-starter/public/js/lib/bootstrap.min.js"></script>
+  <script src="./lexlab-starter/public/js/lib/jquery.oembed.js">
+</script>
+<script src="./lexlab-starter/public/js/main.js"></script>
+<script src="./lexlab-starter/public/js/hello.js"></script>
+<script src="./lexlab-starter/public/js/cron.js"></script>
+link(rel='stylesheet', href='./lexlab-starter/public/css/main.css')
+  link(rel='stylesheet', href='./lexlab-starter/public/css/jquery.oembed.css')
+  script(src="https://cdn.auth0.com/js/lock-7.12.min.js")
+  link(href='https://fonts.googleapis.com/css?family=DosisRaleway', rel='stylesheet', type='text/css')
+  link(rel='stylesheet', href='/llp_core/dist/app.full.min.css')
+  link(rel='stylesheet', href='./lexlab-starter/public/css/jquery.pageslide.css')
+  link(rel='stylesheet',href='/llp_core/bower_components/angular-loading-bar/build/loading-bar.js')
+  script(src="//code.jquery.com/jquery-2.1.4.min.js")
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.13/d3.min.js', data-build='exclude')
+  script(src='https://apis.google.com/js/client.js')
+  script(src='https://apis.google.com/js/api.js')
+  script(src="https://cdn.firebase.com/js/client/2.2.4/firebase.js")
+  script(src="./lexlab-starter/public/js/jquery.pageslide.js")
+  script(type="text/javascript", src="/llp_core/bower_components/filepicker-js/filepicker.js")
+  script(src="/llp_core/bower_components/ckeditor/ckeditor.js")
+  <style> 
+           /* Needed for hiding crollbars when pushing */
+            html {
+                overflow-x: hidden;
+            }            .ng-pageslide {
+                background: #eee;
+            }
+        
+            body.ng-pageslide-body-open::before {
+                content: '.';
+                display: block;
+                position: absolute;
+                top: 0;
+                background-color: rgb(0,0,0);
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 1;
+                opacity: 0.5;
+                transition: opacity 1s;
+            }     body.ng-pageslide-body-closed::before {
+              transition: opacity 1s;
+                opacity: 0;
+                content: '.';
+                display: block;
+                position: absolute;
+                top: 0;
+                background-color: rgb(0,0,0);
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 1;
+                pointer-events: none;
+            }
+            </style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script type="text/javascript" src="/llp_core/bower_components/angular-filepicker/dist/angular_filepicker.js"></script>
+<script src="/llp_core/bower_components/angular-pageslide-directive/dist/angular-pageslide-directive.js"></script>
+<script src="/llp_core/node_modules/angular-file-upload/dist/angular-file-upload.js"></script>
+</script>
+    <!-- build:css css/sample.min.css -->
+    <!-- Bootstrap core CSS -->
+    <link href="components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  </script>
-  <script src="https://apis.google.com/js/client.js"></script>
-  <script src="https://apis.google.com/js/api.js"></script>
-  <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-  <script src="/lexlab-starter/public/js/jquery.pageslide.js"></script>
-  <script type="text/javascript" src="/llp_core/bower_components/filepicker-js/filepicker.js"></script>
-  </script>
-  <style>
+    <!-- dashboard style -->
+    <link href="components/angular-dashboard-framework/dist/angular-dashboard-framework.min.css" rel="stylesheet">
+    <link href="components/adf-widget-clock/dist/adf-widget-clock.min.css" rel="stylesheet">
+    <link href="components/adf-widget-iframe/dist/adf-widget-iframe.min.css" rel="stylesheet">
+    <style>
     body {
       padding-top: 60px;
     }
-  </style>
-  <!-- endbuild -->
+    </style>
+    <!-- endbuild -->
 
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
-  <!--[if lte IE 8]>
+    <!--[if lte IE 8]>
       <script>
         document.createElement('adf-dashboard');
         document.createElement('adf-widget');
         document.createElement('adf-widget-content');
       </script>
     <![endif]-->
-</head>
+  </head>
 
-<body ng-app="adfDynamicSample" class="card-block card-default sub-independent">
+  <body ng-app="adfDynamicSample">
 
- <div id="goldnavbar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-               <a class="card-title lead" href="/">LexSpace&trade;</a>
-            </div>
-       
-        
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container" ng-controller="navigationCtrl as nav">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" ng-click="nav.toggleNav()">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">ADF Dynamic Sample</a>
+        </div>
+        <div collapse="nav.navCollapsed" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li ng-class="nav.navClass('boards/' + item.id)" ng-repeat="item in nav.items | orderBy: title">
+              <a ng-href="#/boards/{{item.id}}">{{item.title}}</a>
+            </li>
+            <li>
+              <a style="cursor: pointer;" ng-click="nav.create()">Create</a>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
       </div>
-      <div collapse="navcollapsed" class="navbar-inner">
-        <ul class="navbar-nav">
-          <li class="nav-item" ng-class="nav.navClass('boards/' + item.id)" ng-repeat="item in nav.items | orderBy: title">
-            <a ui-sref="board({id: item.id})">{{item.title}}</a>
-          </li>
-          <li>
-            <a style="cursor: pointer;" ng-click="nav.create()">Create</a>
-          </li>
-        </ul>
-      </div>
-      <!--/.nav-collapse -->
     </div>
-  </div>
 
+    <div class="container">
 
-  <div class="container-fluid">
-    <ui-view style="width:100%;height: 650px;" />
-  </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-  <script src="/llp_core/dist/app.bower.js"></script>
-  <script data-require="jszip@2.4.0" data-semver="2.4.0" src="https://cdn.rawgit.com/Stuk/jszip/v2.4.0/dist/jszip.js" data-build="exclude">
+      <ng-view />
 
-  </script>
-  <!-- We use client cookies to save the user credentials-->
-  <script src="//code.angularjs.org/1.2.16/angular-cookies.min.js" data-build="exclude"></script>
-  <!-- Auth0 Lock script and AngularJS module-->
-  <script src="//cdn.auth0.com/js/lock-7.9.min.js" data-build="exclude"></script>
-  <!-- angular-jwt and angular-storage-->
-  <script src="/llp_core/ngGAPI-master/nggapi_lib/dist_lib/nggapi_base.min.js"></script>
-  <script src="/llp_core/ngAnnotateText/ng-annotate-text-latest.js"></script>
-  <script src="/llp_core/node_modules/papaparse/papaparse.js"></script>
-  <script src="/llp_core/node_modules/angular-file-upload/dist/angular-file-upload.js"></script>
-  <script src="/llp_core/node_modules/angular-local-storage/dist/angular-local-storage.js"></script>
-  <script src="/llp_core/bower_components/ng-file-upload/ng-file-upload.js"></script>
-  <script src="/llp_core/bower_components/ng-sortable/dist/ng-sortable.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-touch.js"></script>
-  <script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js" data-build="exclude"></script>
-  <script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js" data-build="exclude"></script>
-  <script src="//cdn.auth0.com/w2/auth0-angular-4.js" data-build="exclude"></script>
-  <script src="https://rawgit.com/alexk111/ngImgCrop/master/compile/unminified/ng-img-crop.js" data-build="exclude"></script>
-  <script src="/llp_core/dist/app.enterprise.js" data-build="exclude"></script>
-  <script src="/newwidget/dist/adf-widget-testwidget.js" data-build="exclude"></script>
-  <script src="/getphdwidget/dist/adf-widget-getphd.js" data-build="exclude"></script>
-  <script src="/pagebuilderwidget/dist/adf-widget-pagebuilder.js" data-build="exclude"></script>
-  <script src="/collectionwidget/dist/adf-widget-collectionwidget.js" data-build="exclude"></script>
-  <script src="/treewidget/dist/adf-widget-treewidget.js" data-build="exclude"></script>
-  <script src="/llp_core/dist/templateCache.js" data-build="exclude"></script>
-  <script src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="si21h6tw2o3msis"></script>
-  <script type="text/javascript" src="/llp_core/bower_components/angular-filepicker/dist/angular_filepicker.js"></script>
-  
- 
-    <!-- components-->
+    </div>
+
+    <!-- components -->
     <script type="text/javascript" src="components/Sortable/Sortable.min.js"></script>
     <!--<script type="text/javascript" src="components/angular/angular.min.js"></script>-->
     <script type="text/javascript" src="components/angular-route/angular-route.min.js"></script>
     <script type="text/javascript" src="components/angular-bootstrap/ui-bootstrap.min.js"></script>
     <script type="text/javascript" src="components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <!--<script type="text/javascript" src="components/angular-dashboard-framework/dist/angular-dashboard-framework.min.js"></script>-->
+    <script type="text/javascript" src="components/angular-dashboard-framework/dist/angular-dashboard-framework.min.js"></script>
 
     <!-- scripts -->
     <script type="text/javascript" src="scripts/app.js"></script>
@@ -134,64 +170,35 @@
 
     <!-- clock -->
     <script type="text/javascript" src="components/moment/min/moment.min.js"></script>
-    <script type="text/javascript" src="components/adf-widget-clock/dist/adf-widget-clock.js"></script>
+    <script type="text/javascript" src="components/adf-widget-clock/dist/adf-widget-clock.min.js"></script>
 
     <!-- github -->
     <script type="text/javascript" src="components/highcharts/adapters/standalone-framework.js"></script>
     <script type="text/javascript" src="components/highcharts/highcharts.js"></script>
     <script type="text/javascript" src="components/highcharts-ng/dist/highcharts-ng.js"></script>
-    <script type="text/javascript" src="components/adf-widget-github/dist/adf-widget-github.js"></script>
+    <script type="text/javascript" src="components/adf-widget-github/dist/adf-widget-github.min.js"></script>
 
     <!-- iframe -->
-    <script type="text/javascript" src="components/adf-widget-iframe/dist/adf-widget-iframe.js"></script>
+    <script type="text/javascript" src="components/adf-widget-iframe/dist/adf-widget-iframe.min.js"></script>
 
     <!-- linklist -->
-    <script type="text/javascript" src="components/adf-widget-linklist/dist/adf-widget-linklist.js"></script>
+    <script type="text/javascript" src="components/adf-widget-linklist/dist/adf-widget-linklist.min.js"></script>
 
     <!-- markdown -->
-    <script type="text/javascript" src="components/showdown/compressed/Showdown.js"></script>
+    <script type="text/javascript" src="components/showdown/compressed/Showdown.min.js"></script>
     <script type="text/javascript" src="components/angular-markdown-directive/markdown.js"></script>
-    <script type="text/javascript" src="components/adf-widget-markdown/dist/adf-widget-markdown.js"></script>
+    <script type="text/javascript" src="components/adf-widget-markdown/dist/adf-widget-markdown.min.js"></script>
 
     <!-- news -->
-    <script type="text/javascript" src="components/adf-widget-news/dist/adf-widget-news.js"></script>
+    <script type="text/javascript" src="components/adf-widget-news/dist/adf-widget-news.min.js"></script>
 
     <!-- randommsg -->
-    <script type="text/javascript" src="components/adf-widget-randommsg/dist/adf-widget-randommsg.js"></script>
+    <script type="text/javascript" src="components/adf-widget-randommsg/dist/adf-widget-randommsg.min.js"></script>
 
     <!-- version -->
-    <script type="text/javascript" src="components/adf-widget-version/dist/adf-widget-version.js"></script>
+    <script type="text/javascript" src="components/adf-widget-version/dist/adf-widget-version.min.js"></script>
 
-    <!-- weather  -->
-    <script type="text/javascript" src="components/adf-widget-weather/dist/adf-widget-weather.js"></script>
-  
-  <script src='/llp_core/node_modules/angular-local-storage/dist/angular-local-storage.js'></script>
-  <script src='//cdn.auth0.com/js/lock-7.9.min.js'></script>
-  <script type='text/javascript', src='//cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js'></script>
-  <script type='text/javascript' src='//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js''></script>
-  <script src='https://cdn.rawgit.com/Stuk/jszip/v2.4.0/dist/jszip.js' data-build='exclude'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.13/d3.min.js' data-build='exclude'></script>
-  <script src='https://apis.google.com/js/client.js'></script>
-  <script src="/llp_core/dist/app.bower.js"></script>
-  <script src="/llp_core/modules/common_services/common_services.js"></script>
-  <script src="components/angular-ui-router/release/angular-ui-router.js"></script>
-  <script src="components/angular-ui-tree/dist/angular-ui-tree.js"></script>
-  <script src="components/angularfire/dist/angularfire.js"></script>
-  <script src="components/angular-pdf-viewer/dist/angular-pdf-viewer.min.js"></script>
-  <script src="/getphdwidget/dist/adf-widget-getphd.js"></script>
-  <script src="/collectionwidget/dist/adf-widget-collectionwidget.js"></script>
-  <script src="/pagebuilderwidget/dist/adf-widget-pagebuilder.js"></script>
-  <script src="/newwidget/dist/adf-widget-testwidget.js"></script>
-  <script src="/treewidget/dist/adf-widget-treewidget.js"></script>
-  <script src="/llp_core/dist/app.enterprise.js"></script>
-  <script type="text/javascript" src="/lexlab-starter/public/js/jquery.responsiveiframe.js"></script>
-	<script type="text/javascript">	
-		var ir = responsiveIframe();
-		ir.allowResponsiveEmbedding();
-	</script>-->
-    <!--<link href="DOM-Tree-master/css/domtree.css" rel="stylesheet" media="screen" />-->
-    <!--<div class="tree"></div>-->
-    <!--<script src="DOM-Tree-master/js/domtree.js"></script>-->
-</body>
-
+    <!-- weather -->
+    <script type="text/javascript" src="components/adf-widget-weather/dist/adf-widget-weather.min.js"></script>
+  </body>
 </html>
